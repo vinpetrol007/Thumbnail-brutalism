@@ -1,0 +1,186 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brutal-yellow: var(--brutal-yellow);
+  --color-brutal-cyan: var(--brutal-cyan);
+  --color-brutal-pink: var(--brutal-pink);
+  --color-brutal-lime: var(--brutal-lime);
+  --color-brutal-ink: var(--brutal-ink);
+  --color-brutal-paper: var(--brutal-paper);
+
+  --font-display: "Archivo Black", system-ui, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-yt: "Roboto", "Arial", system-ui, sans-serif;
+
+  --shadow-brutal: 6px 6px 0 0 var(--brutal-ink);
+  --shadow-brutal-sm: 3px 3px 0 0 var(--brutal-ink);
+  --shadow-brutal-lg: 10px 10px 0 0 var(--brutal-ink);
+}
+
+:root {
+  --radius: 0rem;
+
+  /* Brutalist palette */
+  --brutal-paper: oklch(0.97 0.02 95);   /* warm off-white */
+  --brutal-ink: oklch(0.12 0 0);         /* near black */
+  --brutal-yellow: oklch(0.92 0.21 100); /* electric yellow */
+  --brutal-cyan: oklch(0.82 0.16 215);   /* poppy cyan */
+  --brutal-pink: oklch(0.78 0.19 0);     /* hot pink */
+  --brutal-lime: oklch(0.88 0.22 130);   /* lime */
+
+  --background: var(--brutal-paper);
+  --foreground: var(--brutal-ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--brutal-ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--brutal-ink);
+  --primary: var(--brutal-ink);
+  --primary-foreground: var(--brutal-paper);
+  --secondary: var(--brutal-yellow);
+  --secondary-foreground: var(--brutal-ink);
+  --muted: oklch(0.93 0.01 95);
+  --muted-foreground: oklch(0.4 0 0);
+  --accent: var(--brutal-cyan);
+  --accent-foreground: var(--brutal-ink);
+  --destructive: oklch(0.6 0.24 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: var(--brutal-ink);
+  --input: var(--brutal-ink);
+  --ring: var(--brutal-ink);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      linear-gradient(var(--brutal-ink) 1px, transparent 1px),
+      linear-gradient(90deg, var(--brutal-ink) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px;
+    background-attachment: fixed;
+    background-color: var(--brutal-paper);
+    background-blend-mode: normal;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--brutal-paper);
+    opacity: 0.92;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .brutal-border {
+    border: 3px solid var(--brutal-ink);
+  }
+  .brutal-border-thick {
+    border: 4px solid var(--brutal-ink);
+  }
+  .brutal-shadow {
+    box-shadow: var(--shadow-brutal);
+  }
+  .brutal-shadow-sm {
+    box-shadow: var(--shadow-brutal-sm);
+  }
+  .brutal-shadow-lg {
+    box-shadow: var(--shadow-brutal-lg);
+  }
+  .brutal-hover {
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .brutal-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 0 var(--brutal-ink);
+  }
+  .brutal-hover:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 var(--brutal-ink);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* YouTube mockup theme — scoped to .yt-scope                         */
+/* ------------------------------------------------------------------ */
+.yt-scope {
+  font-family: var(--font-yt);
+  --yt-bg: #ffffff;
+  --yt-surface: #ffffff;
+  --yt-surface-2: #f2f2f2;
+  --yt-text: #0f0f0f;
+  --yt-text-secondary: #606060;
+  --yt-border: #e5e5e5;
+  --yt-chip-bg: #f2f2f2;
+  --yt-chip-bg-active: #0f0f0f;
+  --yt-chip-text-active: #ffffff;
+  --yt-red: #ff0033;
+  background: var(--yt-bg);
+  color: var(--yt-text);
+}
+
+.yt-scope.yt-dark {
+  --yt-bg: #0f0f0f;
+  --yt-surface: #0f0f0f;
+  --yt-surface-2: #272727;
+  --yt-text: #f1f1f1;
+  --yt-text-secondary: #aaaaaa;
+  --yt-border: #303030;
+  --yt-chip-bg: #272727;
+  --yt-chip-bg-active: #ffffff;
+  --yt-chip-text-active: #0f0f0f;
+}
+
+/* Hide scrollbars inside the YouTube mockup but keep scrolling functional */
+.yt-scope ::-webkit-scrollbar,
+.yt-scope::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+.yt-scope,
+.yt-scope * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
